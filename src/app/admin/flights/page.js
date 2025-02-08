@@ -74,8 +74,25 @@ export default function AdminFlights() {
                 <td className="py-3 px-4 text-sm text-gray-600">
                   <img src={flight.companyLogoUrl} alt={flight.company} className="w-16 h-16 object-contain" />
                 </td>
-                <td className="py-3 px-4 text-sm text-gray-600">{new Date(flight.departure.date).toLocaleString()}</td>
-                <td className="py-3 px-4 text-sm text-gray-600">{new Date(flight.arrival.date).toLocaleString()}</td>
+<td className="py-3 px-4 text-sm text-gray-600">
+  {new Date(flight.departure.date).toLocaleDateString("en-US", {
+    weekday: "short",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  })} 
+  <span className="text-gray-500"> at {flight.departure.time}</span>
+</td>
+<td className="py-3 px-4 text-sm text-gray-600">
+  {new Date(flight.arrival.date).toLocaleDateString("en-US", {
+    weekday: "short",
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  })} 
+  <span className="text-gray-500"> at {flight.arrival.time}</span>
+</td>
+
                 <td className="py-3 px-4 text-sm text-gray-600">Adult:{flight.price.adult}Rs / Child:{flight.price.child}Rs</td>
                 <td className="py-3 px-4 text-sm text-gray-600">{flight.availableSeats}</td>
                 <td className="py-3 px-4 text-sm text-gray-600">
